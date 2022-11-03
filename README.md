@@ -1,0 +1,2 @@
+# palautusrepositorio
+Palautusrepositorio Helsingin yliopiston ohjelmistotuotannon kurssille
