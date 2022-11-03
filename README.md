@@ -1,4 +1,4 @@
 # palautusrepositorio
 Palautusrepositorio Helsingin yliopiston ohjelmistotuotannon kurssille
 
-[Linkki ohtuvarastoon](github.com/mfaarni/ohtuvarasto)
+[Linkki ohtuvarastoon](https://github.com/mfaarni/ohtuvarasto)
