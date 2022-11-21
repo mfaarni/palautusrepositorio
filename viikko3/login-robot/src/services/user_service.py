@@ -1,7 +1,5 @@
 from entities.user import User
-from repositories.user_repository import (
-    user_repository as default_user_repository
-)
+import re
 
 
 class UserInputError(Exception):
@@ -13,7 +11,7 @@ class AuthenticationError(Exception):
 
 
 class UserService:
-    def __init__(self, user_repository=default_user_repository):
+    def __init__(self, user_repository):
         self._user_repository = user_repository
 
     def check_credentials(self, username, password):
@@ -27,8 +25,8 @@ class UserService:
 
         return user
 
-    def create_user(self, username, password, password_confirmation):
-        self.validate(username, password, password_confirmation)
+    def create_user(self, username, password):
+        self.validate(username, password)
 
         user = self._user_repository.create(
             User(username, password)
@@ -36,11 +34,18 @@ class UserService:
 
         return user
 
-    def validate(self, username, password, password_confirmation):
+    def validate(self, username, password):
         if not username or not password:
             raise UserInputError("Username and password are required")
+        if not re.match("^[a-z]+$", username):
+            raise UserInputError("Username can only contain letters")
+        if len(username)<3:
+            raise UserInputError("Username should be longer than 2 characters")
+        if self._user_repository.find_by_username(username):
+            raise UserInputError("Username already exists")
+        if len(password)<8:
+            raise UserInputError("Password should be longer than 8 characters")
+        if re.match("^[a-z]+$", password):
+            raise UserInputError("Password can't only contain letters")
 
-        # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
-
-
-user_service = UserService()
+            
