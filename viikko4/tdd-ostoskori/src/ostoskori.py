@@ -10,9 +10,11 @@ class Ostoskori:
         return len(self.ostokset)
     
     def hinta(self):
-        
-        if len(self.ostokset)==0:
-            return 0
+
+        hinta=0
+        for ostos in self.ostokset:
+            hinta+=ostos.lukumaara()*ostos.hinta()
+        return hinta
 
     def lisaa_tuote(self, lisattava: Tuote):
         tuote = Ostos(lisattava)
