@@ -16,7 +16,7 @@ class Ostoskori:
 
         hinta=0
         for ostos in self.ostokset:
-            hinta+=ostos.lukumaara()*ostos.hinta()
+            hinta+=ostos.hinta()
         return hinta
 
     def lisaa_tuote(self, lisattava: Tuote):
@@ -38,6 +38,4 @@ class Ostoskori:
         # tyhjentää ostoskorin
 
     def ostokset(self):
-        pass
-        # palauttaa listan jossa on korissa olevat ostos-oliot
-        # kukin ostos-olio siis kertoo mistä tuotteesta on kyse JA kuinka monta kappaletta kyseistä tuotetta korissa on
+        return self.ostokset
