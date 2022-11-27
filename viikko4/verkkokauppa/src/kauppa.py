@@ -33,5 +33,4 @@ class Kauppa:
     def tilimaksu(self, nimi, tili_numero):
         viite = self._viitegeneraattori.uusi()
         summa = self._ostoskori.hinta()
-
         return self._pankki.tilisiirto(nimi, viite, tili_numero, self._kaupan_tili, summa)
