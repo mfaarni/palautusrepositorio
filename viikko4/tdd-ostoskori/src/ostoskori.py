@@ -7,8 +7,11 @@ class Ostoskori:
 
     def tavaroita_korissa(self):
 
-        return len(self.ostokset)
-    
+        tavarat=0
+        for ostos in self.ostokset:
+            tavarat+=ostos.lukumaara()
+        return tavarat
+
     def hinta(self):
 
         hinta=0
@@ -18,7 +21,13 @@ class Ostoskori:
 
     def lisaa_tuote(self, lisattava: Tuote):
         tuote = Ostos(lisattava)
-        self.ostokset.append(tuote)
+        löytyy = False
+        for ostos in self.ostokset:
+            if tuote.tuotteen_nimi() == ostos.tuotteen_nimi():
+                ostos.muuta_lukumaaraa(1)
+                löytyy = True
+        if not löytyy:
+            self.ostokset.append(tuote)
 
     def poista_tuote(self, poistettava: Tuote):
         # poistaa tuotteen
