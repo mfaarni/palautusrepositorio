@@ -7,8 +7,7 @@ class Komento(Enum):
     NOLLAUS = 3
     KUMOA = 4
 
-
-class Kayttoliittyma:
+class Kayttoliittyma:   
     def __init__(self, sovelluslogiikka, root):
         self._sovellus = sovelluslogiikka
         self._root = root
